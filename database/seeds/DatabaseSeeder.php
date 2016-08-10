@@ -27,16 +27,17 @@ class CategorySeeder extends Seeder
 
         DB::table('categories')->truncate();
 
-        $orientation = Category::create([
-            'name' => 'Hướng nghiệp',
-            'desc' => 'Hướng nghiệp'
+        Category::create([
+            'name' => 'Tin tức',
+            'desc' => 'Tin tức'
         ]);
 
         Category::create([
-            'name' => 'Khám phá bản thân',
-            'parent_id' => $orientation->id,
-            'desc' => 'Khám phá bản thân'
+            'name' => 'Sự kiện',
+            'desc' => 'Sự kiện'
         ]);
+
+
         Model::reguard();
 
         DB::statement("SET foreign_key_checks=1");
