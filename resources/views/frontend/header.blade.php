@@ -14,20 +14,20 @@
         </div>
         <div class="collapse navbar-collapse" id="ttk-mainmenu">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li class="{{($page == 'index') ? 'active' : ''}}">
                     <a href="{{url('/')}}" title="">Trang chủ</a>
                 </li>
-                <li>
+                <li class="{{($page == 'gioi-thieu') ? 'active' : ''}}">
                     <a href="{{url('gioi-thieu')}}">Giới thiệu</a>
                 </li>
-                <li>
+                <li class="{{($page == 'tan-thu') ? 'active' : ''}}">
                     <a href="{{url('tan-thu')}}">Tân thủ</a>
                 </li>
                 <a class="navbar-brand hidden-sm hidden-xs" href="/">
                     <img src="{{url('frontend/images/ttk.png')}}" alt="">
                 </a>
-                <li><a href="{{url('tin-tuc')}}">Tin tức</a></li>
-                <li><a href="{{url('thu-vien')}}">Thư viện</a></li>
+                <li class="{{($page == 'tin-tuc') ? 'active' : ''}}"><a href="{{url('tin-tuc')}}">Tin tức</a></li>
+                <li class="{{($page == 'thu-vien') ? 'active' : ''}}"><a href="{{url('thu-vien')}}">Thư viện</a></li>
                 <li><a href="http://hotro.garena.vn/" target="_blank">Hỗ trợ</a></li>
             </ul>
         </div>
@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="ttk-download">
-        <a href="" class="napthe"></a>
-        <a href="" class="taigame"></a>
+        <a href="{{$settings['link_napthe']}}" class="napthe"></a>
+        <a href="{{$settings['link_taigame']}}" class="taigame"></a>
     </div>
 </div>

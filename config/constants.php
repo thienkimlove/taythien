@@ -1,5 +1,16 @@
 <?php
 
 return [
-    'VIDEO_URL' => 'https://www.youtube.com/embed/lsEfKRURSsQ?rel=0&amp;controls=1&amp;showinfo=0'
+
+
+    'NEWS_CATEGORY_ID' => 1,
+    'EVENT_CATEGORY_ID' => 2,
+
+
+    'FRONTEND_CACHE_TIME' => 5,
+
+
+
+    'GAME_CONTENT_TYPE_TRAILER' => 1,
+    'GAME_CONTENT_TYPE_ARTWORK_SLIDER' => 2,
 ];

@@ -3,10 +3,24 @@
 namespace App\Providers;
 
 
+use Cache;
+use DB;
 use Illuminate\Support\ServiceProvider;
 
 class ViewComposerProvider extends ServiceProvider
 {
+
+    protected function getSettings()
+    {
+        if (env('CACHE_ENABLE')) {
+            return Cache::remember('settings', config('constants.FRONTEND_CACHE_TIME'), function()  {
+                return DB::table('settings')->lists('value', 'key_value');
+            });
+        } else {
+            return DB::table('settings')->lists('value', 'key_value');
+        }
+    }
+
     /**
      * Bootstrap the application services.
      *
@@ -15,11 +29,9 @@ class ViewComposerProvider extends ServiceProvider
     public function boot()
     {
 
-      /*  view()->composer('frontend', function ($view) {
-            $view->with('links',  Cache::remember('composer_links', 10, function() {
-                return DB::table('links')->get();
-            }));
-        });*/
+        view()->composer('*', function ($view) {
+            $view->with('settings',  $this->getSettings());
+        });
 
     }
 
