@@ -175,54 +175,114 @@ class CategorySeeder extends Seeder
 
         Image::make(public_path('frontend/images/img-a3.jpg'))->save(public_path('files/'. $img2));
 
-        GameContent::create([
-            'type' => config('constants.GAME_CONTENT_TYPE_ARTWORK_SLIDER'),
-            'title' => 'artwork slide 1',
-            'image' => $img2,
-            'order' => 1
-        ]);
 
-        GameContent::create([
-            'type' => config('constants.GAME_CONTENT_TYPE_ARTWORK_SLIDER'),
-            'title' => 'artwork slide 2',
-            'image' => $img2,
-            'order' => 2
-        ]);
+        for ($i = 1 ; $i < 8 ; $i ++) {
+            GameContent::create([
+                'type' => config('constants.GAME_CONTENT_TYPE_ARTWORK_SLIDER'),
+                'title' => 'artwork slide '.$i,
+                'image' => $img2,
+                'order' => $i
+            ]);
+        }
 
-        GameContent::create([
-            'type' => config('constants.GAME_CONTENT_TYPE_ARTWORK_SLIDER'),
-            'title' => 'artwork slide 3',
-            'image' => $img2,
-            'order' => 3
-        ]);
 
-        GameContent::create([
-            'type' => config('constants.GAME_CONTENT_TYPE_ARTWORK_SLIDER'),
-            'title' => 'artwork slide 4',
-            'image' => $img2,
-            'order' => 4
-        ]);
+        $img3 = md5(time()).'3.jpg';
 
-        GameContent::create([
-            'type' => config('constants.GAME_CONTENT_TYPE_ARTWORK_SLIDER'),
-            'title' => 'artwork slide 5',
-            'image' => $img2,
-            'order' => 5
-        ]);
+        Image::make(public_path('frontend/images/char3.png'))->save(public_path('files/'. $img3));
 
-        GameContent::create([
-            'type' => config('constants.GAME_CONTENT_TYPE_ARTWORK_SLIDER'),
-            'title' => 'artwork slide 6',
-            'image' => $img2,
-            'order' => 6
-        ]);
+        for ($i = 1 ; $i < 6 ; $i ++) {
+            GameContent::create([
+                'type' => config('constants.GAME_CONTENT_TYPE_CHARACTER_SLIDER'),
+                'title' => 'Bích Thu '.$i,
+                'desc' => 'Thuộc hệ Nhân, có thể gia nhập sư môn để tăng công vật lý đơn, trị liệu tập thể hoặc các kỹ năng phong ấn.',
+                'image' => $img3,
+                'order' => $i
+            ]);
+        }
 
-        GameContent::create([
-            'type' => config('constants.GAME_CONTENT_TYPE_ARTWORK_SLIDER'),
-            'title' => 'artwork slide 7',
-            'image' => $img2,
-            'order' => 7
-        ]);
+
+        $img4 = md5(time()).'4.jpg';
+
+        Image::make(public_path('frontend/images/img-nv1.jpg'))->save(public_path('files/'. $img4));
+
+        for ($i = 1 ; $i < 6 ; $i ++) {
+            GameContent::create([
+                'type' => config('constants.GAME_CONTENT_TYPE_MISSION_LIST'),
+                'title' => 'Sư Môn '.$i,
+                'desc' => 'Nhiệm vụ cơ bản, lợi ích cao cho cả tân thủ và người chơi kỳ cực. Dành chút thời gian đóng góp công sức cho sư môn phát triển để kiếm nhiều Bạc.',
+                'image' => $img4,
+                'order' => $i
+            ]);
+        }
+
+
+
+
+        $img5 = md5(time()).'5.jpg';
+
+        Image::make(public_path('frontend/images/img-lt1.png'))->save(public_path('files/'. $img5));
+
+
+        for ($i = 1 ; $i < 10 ; $i ++) {
+            GameContent::create([
+                'type' => config('constants.GAME_CONTENT_TYPE_PET_SLIDER'),
+                'title' => 'Miêu Nữ '.$i,
+                'desc' => 'Bé mèo đáng yêu nhưng có cú đấm không hề yếu thời gian đầu game.',
+                'addition_desc' => 'Cách nhận linh thú',
+                'image' => $img5,
+                'order' => $i
+            ]);
+        }
+
+        $img6 = md5(time()).'6.jpg';
+
+        Image::make(public_path('frontend/images/img-sm1.png'))->save(public_path('files/'. $img6));
+
+        for ($i = 1 ; $i < 10 ; $i ++) {
+            GameContent::create([
+                'type' => config('constants.GAME_CONTENT_TYPE_SKILL_LIST'),
+                'title' => 'Thiên Sách '.$i,
+                'desc' => 'Công kích vật lý đơn lẻ, sức dài vai rộng, đấm phát chết luôn. Nôm na là thanh niên chuyên băng lên trước, tay nhanh hơn não, dồn sát thương mạnh.',
+                'image' => $img6,
+                'order' => $i
+            ]);
+        }
+
+
+        $img7 = md5(time()).'7.jpg';
+
+        Image::make(public_path('frontend/images/img-bt2.jpg'))->save(public_path('files/'. $img7));
+
+        for ($i = 1 ; $i < 13 ; $i ++) {
+            GameContent::create([
+                'type' => config('constants.GAME_CONTENT_TYPE_TOGETHER_SLIDER'),
+                'title' => 'Bích Thu '.$i,
+                'desc' => 'Đồng Hành nhiệt tình gắn bó với bạn từ rất sớm. Thuộc phái Thiên Sách, tấn công mạnh mẽ, sát thương cực cao.',
+                'image' => $img7,
+                'order' => $i
+            ]);
+        }
+
+
+        $img8 = md5(time()).'8.jpg';
+
+        Image::make(public_path('frontend/images/img-tn.png'))->save(public_path('files/'. $img8));
+
+
+        $icon = md5(time()).'.jpg';
+
+        Image::make(public_path('frontend/images/i-cdcd.png'))->save(public_path('files/'. $icon));
+
+        for ($i = 1 ; $i < 6 ; $i ++) {
+            GameContent::create([
+                'type' => config('constants.GAME_CONTENT_TYPE_FUNCTION_LIST'),
+                'title' => 'Tính năng '.$i,
+                'image' => $img8,
+                'icon' => $icon,
+                'order' => $i
+            ]);
+        }
+
 
     }
 

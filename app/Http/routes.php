@@ -47,7 +47,8 @@ Route::group(['middleware' => 'web'], function () {
     //Route::get('logout', 'SocialAuthController@logout');
 
     Route::get('/', 'FrontendController@index');   
-    Route::get('chuyen-muc/{value}', 'FrontendController@category');    
+    Route::get('gioi-thieu', 'FrontendController@recommend');
+    Route::get('chuyen-muc/{value}', 'FrontendController@category');
     Route::get('{value}', 'FrontendController@main');
 });
 

@@ -15,5 +15,7 @@ class GameContent extends Model
         'external_link',
         'order',
         'video_url',
+        'addition_desc',
+        'icon'
     ];
 }

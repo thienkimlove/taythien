@@ -71,6 +71,49 @@ class FrontendController extends Controller
 
         return view('frontend.index', compact('page', 'indexNewsPosts', 'indexNewsEvent', 'trailer', 'artWorkSliders'));
     }
+
+    public function recommend()
+    {
+        $page = 'gioi-thieu';
+
+        $characterQuery = DB::table('game_contents')
+            ->where('type', config('constants.GAME_CONTENT_TYPE_CHARACTER_SLIDER'))
+            ->orderBy('order');
+
+        $charSliders = $this->getResult($characterQuery, 'recommend_slider');
+
+        $missionListQuery = DB::table('game_contents')
+            ->where('type', config('constants.GAME_CONTENT_TYPE_MISSION_LIST'))
+            ->orderBy('order');
+
+        $missionList = $this->getResult($missionListQuery, 'recommend_mission');
+
+        $petSliderQuery = DB::table('game_contents')
+            ->where('type', config('constants.GAME_CONTENT_TYPE_PET_SLIDER'))
+            ->orderBy('order');
+
+        $petSliders = $this->getResult($petSliderQuery, 'recommend_pet');
+
+        $skillListQuery = DB::table('game_contents')
+            ->where('type', config('constants.GAME_CONTENT_TYPE_SKILL_LIST'))
+            ->orderBy('order');
+
+        $skillList = $this->getResult($skillListQuery, 'recommend_skill');
+
+        $togetherQuery = DB::table('game_contents')
+            ->where('type', config('constants.GAME_CONTENT_TYPE_TOGETHER_SLIDER'))
+            ->orderBy('order');
+
+        $togetherSliders = $this->getResult($togetherQuery, 'recommend_together');
+
+        $functionListQuery = DB::table('game_contents')
+            ->where('type', config('constants.GAME_CONTENT_TYPE_FUNCTION_LIST'))
+            ->orderBy('order');
+
+        $functionLists = $this->getResult($functionListQuery, 'recommend_function');
+
+        return view('frontend.recommend', compact('page', 'charSliders', 'missionList', 'petSliders', 'skillList', 'togetherSliders', 'functionLists'));
+    }
   
 
     public function category($value)

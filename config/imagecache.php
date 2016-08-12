@@ -74,6 +74,37 @@ return array(
         '340x184' => function($image) {
             return $image->fit(340, 184);
         },
+
+        '241x343' => function($image) {
+            return $image->fit(241, 343);
+        },
+
+        '360x362' => function($image) {
+            return $image->fit(360, 362);
+        },
+
+        '267x267' => function($image) {
+            return $image->fit(267, 267);
+        },
+
+        '77x77' => function($image) {
+            return $image->fit(77, 77);
+        },
+
+        '172x172' => function($image) {
+            return $image->fit(172, 172);
+        },
+
+        '600x286' => function($image) {
+            return $image->fit(600, 286);
+        },
+        '680x537' => function($image) {
+            return $image->fit(680, 537);
+        },
+
+        '86x148' => function($image) {
+            return $image->fit(86, 148);
+        },
     ),
 
     /*
