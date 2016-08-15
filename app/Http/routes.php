@@ -39,7 +39,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('admin', 'HomeController@index');   
     Route::resource('admin/posts', 'PostsController');
-    Route::resource('admin/categories', 'CategoriesController');   
+    Route::resource('admin/settings', 'SettingsController');
+    Route::resource('admin/game_contents', 'GameContentsController');
 
     #Frontend Routes
     //Route::get('redirect', 'SocialAuthController@redirect');
@@ -48,7 +49,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/', 'FrontendController@index');   
     Route::get('gioi-thieu', 'FrontendController@recommend');
-    Route::get('chuyen-muc/{value}', 'FrontendController@category');
+    Route::get('tan-thu', 'FrontendController@gamer');
+    Route::get('thu-vien', 'FrontendController@library');
+    Route::get('tin-tuc', 'FrontendController@news');
     Route::get('{value}', 'FrontendController@main');
 });
 

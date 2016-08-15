@@ -30,9 +30,11 @@
                 <li>
                     <a><i class="fa fa-files-o fa-fw"></i>Post<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-
                         <li>
-                            <a href="{{url('admin/posts')}}">List</a>
+                            <a href="{{url('admin/posts?category_id='.config('constants.NEWS_CATEGORY_ID'))}}">Tin tức</a>
+                        </li>
+                        <li>
+                            <a href="{{url('admin/posts?category_id='.config('constants.EVENT_CATEGORY_ID'))}}">Sự kiện</a>
                         </li>
                         <li>
                             <a href="{{url('admin/posts/create')}}">Add</a>
@@ -42,15 +44,21 @@
                 </li>
 
                 <li>
-                    <a><i class="fa fa-files-o fa-fw"></i>Category<span class="fa arrow"></span></a>
+                    <a href="{{url('admin/settings')}}"><i class="fa fa-files-o fa-fw"></i>Settings<span class="fa arrow"></span></a>
+                    <!-- /.nav-second-level -->
+                </li>
+
+                <li>
+                    <a><i class="fa fa-files-o fa-fw"></i>Game Contents<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
 
-                        <li>
-                            <a href="{{url('admin/categories')}}">List</a>
-                        </li>
-                        <li>
-                            <a href="{{url('admin/categories/create')}}">Add</a>
-                        </li>
+                        @foreach (config('constants') as $key => $config)
+                            @if (strpos($key, 'GAME_CONTENT_TYPE') !== false)
+                                <li>
+                                    <a href="{{url('admin/game_contents?type='.$config)}}">{{  str_replace('_', ' ', str_replace('GAME_CONTENT_TYPE', '', $key)) }}</a>
+                                </li>
+                            @endif
+                        @endforeach
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>

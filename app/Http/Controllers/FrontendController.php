@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Category;
+use App\GameContent;
 use App\Post;
 use App\Http\Requests;
 use Cache;
@@ -112,36 +113,70 @@ class FrontendController extends Controller
 
         $functionLists = $this->getResult($functionListQuery, 'recommend_function');
 
+
         return view('frontend.recommend', compact('page', 'charSliders', 'missionList', 'petSliders', 'skillList', 'togetherSliders', 'functionLists'));
     }
-  
 
-    public function category($value)
+    public function gamer()
     {
-        $category = Category::where('slug', $value)->first();
+        $page = 'tan-thu';
 
-        if ($category->subCategories->count() == 0) {
-            //child categories
-            $posts = Post::publish()
-                ->where('category_id', $category->id)
-                ->latest('updated_at')
-                ->limit(5)->get();
-            $page = ($category->parent_id) ? $category->parent->slug : $category->slug;
+        $gamerQuery = DB::table('game_contents')
+            ->orderBy('updated_at', 'desc')
+            ->where('type', config('constants.GAME_CONTENT_TYPE_GAMER'));
 
-        } else {
-            //parent categories
-            $page = $category->slug;
-            $posts = Post::publish()
-                ->whereIn('category_id', $category->subCategories->lists('id')->all())
-                ->latest('updated_at')
-                ->limit(5)->get();
+        $gamers = $this->getResult($gamerQuery, 'gamers');
 
-        }
 
-        return view('frontend.category', compact(
-            'category', 'posts', 'page'
-        ));
+        return view('frontend.gamer', compact('page', 'gamers'));
     }
+
+    public function library()
+    {
+        $page = 'thu-vien';
+
+        $backgroundImages = GameContent::latest('updated_at')
+            ->where('type', config('constants.GAME_CONTENT_TYPE_LIBRARY_BACKGROUND'))->get();
+
+
+        $videos = GameContent::latest('updated_at')
+            ->where('type', config('constants.GAME_CONTENT_TYPE_LIBRARY_VIDEO'))->get();
+
+
+        $screenshots = GameContent::latest('updated_at')
+            ->where('type', config('constants.GAME_CONTENT_TYPE_LIBRARY_SCREENSHOTS'))->get();
+
+
+
+        return view('frontend.library', compact('page', 'backgroundImages', 'videos', 'screenshots'));
+    }
+
+    public function news()
+    {
+        $page = 'tin-tuc';
+
+        $newsQuery = DB::table('posts')
+            ->where('status', true)
+            ->where('category_id', config('constants.NEWS_CATEGORY_ID'))
+            ->latest('updated_at')
+            ->limit(12);
+
+
+        $newsPosts = $this->getResult($newsQuery, 'news_post');
+
+        $eventQuery = DB::table('posts')
+            ->where('status', true)
+            ->where('category_id', config('constants.EVENT_CATEGORY_ID'))
+            ->latest('updated_at')
+            ->limit(12);
+
+
+        $eventPosts = $this->getResult($eventQuery, 'index_post_event');
+
+        return view('frontend.news', compact('page', 'newsPosts', 'eventPosts'));
+    }
+
+
 
     public function main($value)
     {

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class LinkRequest extends Request
+class SettingRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,7 @@ class LinkRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
-            'url' => 'required'
+            'value' => 'required'
         ];
     }
 }

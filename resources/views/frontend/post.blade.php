@@ -2,6 +2,27 @@
 
 @section('content')
 
+    <div class="feature">
+        <div class="ttkpage-header">
+            <img src="{{url('frontend/images/img-tt.jpg')}}" alt="">
+            <div class="container">
+                <div class="row">
+                    <h2>Tin tức</h2>
+                    <p>Cập nhật những thông tin mới nhất về Tây Thiên Ký</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <img src="{{url('frontend/images/p12+.png')}}" alt="">
+            </div>
+        </div>
+        <div class="ttk-download">
+            <a href="{{$settings['link_napthe']}}" class="napthe"></a>
+            <a href="{{$settings['link_taigame']}}" class="taigame"></a>
+        </div>
+    </div>
+
     <div class="main articles">
         <div class="container">
             <div class="row">

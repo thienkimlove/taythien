@@ -36,19 +36,3 @@
     <!-- /.container -->
 </nav>
 
-@if ($page != 'gioi-thieu')
-    <div class="feature">
-        <div class="img-large">
-            <img src="{{url('frontend/images/sld1.jpg')}}" alt="First slide">
-        </div>
-        <div class="container">
-            <div class="row">
-                <img src="{{url('frontend/images/p12+.png')}}" alt="">
-            </div>
-        </div>
-        <div class="ttk-download">
-            <a href="{{$settings['link_napthe']}}" class="napthe"></a>
-            <a href="{{$settings['link_taigame']}}" class="taigame"></a>
-        </div>
-    </div>
-@endif

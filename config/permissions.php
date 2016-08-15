@@ -6,12 +6,12 @@ return [
         'permission' => [
             'HomeController@index',
 
-            'CategoriesController@index',
-            'CategoriesController@create',
-            'CategoriesController@edit',
-            'CategoriesController@destroy',
-            'CategoriesController@update',
-            'CategoriesController@store',
+            'GameContentsController@index',
+            'GameContentsController@create',
+            'GameContentsController@edit',
+            'GameContentsController@destroy',
+            'GameContentsController@update',
+            'GameContentsController@store',
 
             'PostsController@index',
             'PostsController@create',
@@ -19,6 +19,13 @@ return [
             'PostsController@destroy',
             'PostsController@update',
             'PostsController@store',
+
+            'SettingsController@index',
+            'SettingsController@create',
+            'SettingsController@edit',
+            'SettingsController@destroy',
+            'SettingsController@update',
+            'SettingsController@store',
 
         ]
     ],
@@ -28,12 +35,12 @@ return [
         'permission' => [
             'HomeController@index',
 
-            'CategoriesController@index',
-            'CategoriesController@create',
-            'CategoriesController@edit',
-            'CategoriesController@destroy',
-            'CategoriesController@update',
-            'CategoriesController@store',
+            'GameContentsController@index',
+            'GameContentsController@create',
+            'GameContentsController@edit',
+            'GameContentsController@destroy',
+            'GameContentsController@update',
+            'GameContentsController@store',
 
             'PostsController@index',
             'PostsController@create',
@@ -41,6 +48,13 @@ return [
             'PostsController@destroy',
             'PostsController@update',
             'PostsController@store',
+
+            'SettingsController@index',
+            'SettingsController@create',
+            'SettingsController@edit',
+            'SettingsController@destroy',
+            'SettingsController@update',
+            'SettingsController@store',
         ]
     ]
 ];

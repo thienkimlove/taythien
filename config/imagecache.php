@@ -105,6 +105,14 @@ return array(
         '86x148' => function($image) {
             return $image->fit(86, 148);
         },
+
+        '555x359' => function($image) {
+            return $image->fit(555, 359);
+        },
+
+        '460x249' => function($image) {
+            return $image->fit(460, 249);
+        },
     ),
 
     /*

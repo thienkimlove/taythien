@@ -45,7 +45,7 @@
             <div class="form-group">
                 {!! Form::label('image', 'Image') !!}
                 @if ($post->image)
-                    <img src="{{url('img/cache/120x120/' . $post->image)}}" />
+                    <img src="{{url('img/cache/small/' . $post->image)}}" />
                     <hr>
                 @endif
                 {!! Form::file('image', null, ['class' => 'form-control']) !!}
@@ -71,30 +71,4 @@
 
         </div>
     </div>
-@endsection
-
-@section('footer')
-    <script>
-        $(document).ready(function(){
-            jQuery.datetimepicker.setLocale('vi');
-
-            jQuery('#event_start, #event_end').datetimepicker({
-                i18n:{
-                    vi:{
-                        months:[
-                            'Thang 1','Thang 2','Thang 3','Thang 4',
-                            'Thang 5','Thang 6','Thang 7','Thang 8',
-                            'Thang 9','Thang 10','Thang 11','Thang 12',
-                        ],
-                        dayOfWeek:[
-                            "Chu Nhat", "Thu 2", "Thu 3", "Thu 4",
-                            "Thu 5", "Thu 6", "Thu 7",
-                        ]
-                    }
-                },
-                timepicker:true,
-                format:'Y-m-d H:i:s'
-            });
-        });
-    </script>
 @endsection

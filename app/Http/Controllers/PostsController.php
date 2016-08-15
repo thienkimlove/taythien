@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Post;
 
 class PostsController extends AdminController
@@ -19,14 +16,11 @@ class PostsController extends AdminController
     public function __construct()
     {
         parent::__construct();
-        $categoryIds = [];
-        $categories = Category::all();
-        foreach ($categories as $cate) {
-            if ($cate->subCategories->count() == 0) {
-                $categoryIds[] = $cate->id;
-            }
-        }
-        $this->categories = array('' => 'Choose category') +  Category::whereIn('id', $categoryIds)->lists('name', 'id')->all();
+        $this->categories = array(
+            '' => 'Choose category',
+            config('constants.NEWS_CATEGORY_ID') => 'Tin Tức',
+            config('constants.NEWS_CATEGORY_ID') => 'Sự Kiện'
+        );
     }
 
 
@@ -35,16 +29,15 @@ class PostsController extends AdminController
 
         $searchPost = '';
         $categoryId = '';
-        $posts = Post::whereNull('user_id')->latest('updated_at');
+        $posts = Post::latest('updated_at');
         if ($request->input('q')) {
             $searchPost = urldecode($request->input('q'));
             $posts = $posts->where('title', 'LIKE', '%'. $searchPost. '%');
         }
 
-        if ($request->input('cat')) {
-            $categoryId = $request->input('cat');
-            $category = Category::find($categoryId);
-            $posts = ($category->subCategories->count() == 0) ? $posts->where('category_id', '=', $categoryId) : $posts->whereIn('category_id', $category->subCategories->lists('id')->all());
+        if ($request->input('category_id')) {
+            $categoryId = $request->input('category_id');
+            $posts = $posts->where('category_id', '=', $categoryId);
         }
 
         $posts = $posts->paginate(env('ITEM_PER_PAGE'));
@@ -63,12 +56,6 @@ class PostsController extends AdminController
         $data = $request->all();
         $data['image'] =  ($request->file('image') && $request->file('image')->isValid()) ? $this->saveImage($request->file('image')) : '';
         $data['status'] = ($request->input('status') == 'on') ? true : false;
-        if (!$data['event_start']) {
-            $data['event_start'] = null;
-        }
-        if (!$data['event_end']) {
-            $data['event_end'] = null;
-        }
         Post::create($data);
         flash('Create post success!', 'success');
         return redirect('admin/posts');
@@ -87,12 +74,6 @@ class PostsController extends AdminController
         $post = Post::find($id);
         if ($request->file('image') && $request->file('image')->isValid()) {
             $data['image'] = $this->saveImage($request->file('image'), $post->image);
-        }
-        if (!$data['event_start']) {
-            $data['event_start'] = null;
-        }
-        if (!$data['event_end']) {
-            $data['event_end'] = null;
         }
         $data['status'] = ($request->input('status') == 'on') ? true : false;
         $post->update($data);

@@ -269,7 +269,7 @@ class CategorySeeder extends Seeder
         Image::make(public_path('frontend/images/img-tn.png'))->save(public_path('files/'. $img8));
 
 
-        $icon = md5(time()).'.jpg';
+        $icon = md5(time()).'icon.jpg';
 
         Image::make(public_path('frontend/images/i-cdcd.png'))->save(public_path('files/'. $icon));
 
@@ -282,6 +282,73 @@ class CategorySeeder extends Seeder
                 'order' => $i
             ]);
         }
+
+        GameContent::create([
+            'type' => config('constants.GAME_CONTENT_TYPE_GAMER'),
+            'title' => 'Cơ Bản',
+            'content' => 'Trong đây, 2 nút cơ bản nhất là Phép và Công Bạn chỉ có thể điều khiển Linh Thú, không thể điều khiển Đồng Hành Linh Thú có kỹ năng chủ động là khá hiếm'
+
+        ]);
+
+        GameContent::create([
+            'type' => config('constants.GAME_CONTENT_TYPE_GAMER'),
+            'title' => 'Nâng Cao',
+            'content' => 'Trong đây, 2 nút cơ bản nhất là Phép và Công Bạn chỉ có thể điều khiển Linh Thú, không thể điều khiển Đồng Hành Linh Thú có kỹ năng chủ động là khá hiếm'
+
+        ]);
+
+        GameContent::create([
+            'type' => config('constants.GAME_CONTENT_TYPE_GAMER'),
+            'title' => 'Mua Bán và Nạp Tiền',
+            'content' => 'Trong đây, 2 nút cơ bản nhất là Phép và Công Bạn chỉ có thể điều khiển Linh Thú, không thể điều khiển Đồng Hành Linh Thú có kỹ năng chủ động là khá hiếm'
+
+        ]);
+
+
+        $img9 = md5(time()).'9.jpg';
+
+        Image::make(public_path('frontend/images/img-tv1.jpg'))->save(public_path('files/'. $img9));
+
+        for ($i = 1 ; $i < 13 ; $i ++) {
+            GameContent::create([
+                'type' => config('constants.GAME_CONTENT_TYPE_LIBRARY_BACKGROUND'),
+                'title' => 'Ảnh Nền '.$i,
+                'image' => $img9,
+                'order' => $i
+            ]);
+        }
+
+
+
+        $img10 = md5(time()).'10.jpg';
+
+        Image::make(public_path('frontend/images/img-tv1.jpg'))->save(public_path('files/'. $img10));
+
+        for ($i = 1 ; $i < 13 ; $i ++) {
+            GameContent::create([
+                'type' => config('constants.GAME_CONTENT_TYPE_LIBRARY_VIDEO'),
+                'title' => 'Video '.$i,
+                'image' => $img10,
+                'video_url' => 'http://www.youtube.com/watch?v=k6mFF3VmVAs',
+                'order' => $i
+            ]);
+        }
+
+
+        $img11 = md5(time()).'11.jpg';
+
+        Image::make(public_path('frontend/images/img-tv1.jpg'))->save(public_path('files/'. $img11));
+
+        for ($i = 1 ; $i < 13 ; $i ++) {
+            GameContent::create([
+                'type' => config('constants.GAME_CONTENT_TYPE_LIBRARY_SCREENSHOTS'),
+                'title' => 'Screenshot '.$i,
+                'image' => $img11,
+                'order' => $i
+            ]);
+        }
+
+
 
 
     }

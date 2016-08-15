@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class UniversityRequest extends Request
+class GameContentRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class UniversityRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
-            'city_id' => 'required',
+            'title' => 'required',
+            'type' => 'required',
         ];
     }
 }
