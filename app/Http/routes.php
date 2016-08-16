@@ -52,6 +52,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('tan-thu', 'FrontendController@gamer');
     Route::get('thu-vien', 'FrontendController@library');
     Route::get('tin-tuc', 'FrontendController@news');
+    Route::get('landing', 'FrontendController@landing');
     Route::get('{value}', 'FrontendController@main');
 });
 

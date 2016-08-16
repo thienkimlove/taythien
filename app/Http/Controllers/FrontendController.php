@@ -176,6 +176,19 @@ class FrontendController extends Controller
         return view('frontend.news', compact('page', 'newsPosts', 'eventPosts'));
     }
 
+    public function landing()
+    {
+        $page = 'landing';
+
+        $artWorkQuery = DB::table('game_contents')
+            ->where('type', config('constants.GAME_CONTENT_TYPE_ARTWORK_SLIDER'))
+            ->orderBy('order');
+
+        $artWorkSliders = $this->getResult($artWorkQuery, 'index_artwork');
+
+        return view('landing', compact('page', 'artWorkSliders'));
+    }
+
 
 
     public function main($value)

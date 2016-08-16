@@ -150,8 +150,8 @@
                 <div class="tab-sm">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs col-md-3 col-sm-5 col-md-offset-2" role="tablist">
-                        @foreach ($skillList as $skill)
-                        <li role="presentation">
+                        @foreach ($skillList as $k => $skill)
+                        <li role="presentation" class="{{ ($k == 0) ? 'active' : '' }}">
                             <a href="#sm{{$skill->order}}" aria-controls="sm{{$skill->order}}" role="tab" data-toggle="tab">
                                 <img src="{{url('img/cache/77x77', $skill->image)}}" alt="">
                             </a>
@@ -160,8 +160,8 @@
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content col-md-6 col-sm-7">
-                        @foreach ($skillList as $skill)
-                        <div role="tabpanel" class="tab-pane active" id="sm{{$skill->order}}">
+                        @foreach ($skillList as $k => $skill)
+                        <div role="tabpanel" class="{{ ($k == 0) ? 'tab-pane active' : 'tab-pane' }}" id="sm{{$skill->order}}">
                             <h4>{{$skill->title}}</h4>
                             <p>{{$skill->desc}}</p>
                         </div>
