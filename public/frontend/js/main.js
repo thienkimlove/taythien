@@ -22,7 +22,17 @@
         owlItems2.eq(owlLength2-2).remove();
     }
 
+
     var owl = $(".owl-carousel");
+
+    if (owl.attr('id') == 'owl-chars') {
+       var last = owl.children().last().clone();
+       var first = owl.children().first().clone();
+        last.prependTo(owl);
+        first.appendTo(owl);
+
+    }
+
 
     owl.owlCarousel({
 
@@ -30,7 +40,7 @@
         itemsDesktop : [1000,1], //5 items between 1000px and 901px
         itemsDesktopSmall : [900,1], // betweem 900px and 601px
         itemsTablet: [600,1], //2 items between 600 and 0
-        itemsMobile : false,  
+        itemsMobile : false,
         navigation: true,
         afterAction: function(el) {
             if ($('body').width() >= 1000) {
@@ -60,6 +70,20 @@
     });
 
     var owl2 = $(".owl-carousel2");
+
+
+    if (owl2.attr('id') == 'owl-donghanh') {
+        var last1 = owl2.children().last().clone();
+        var prevLast = owl2.children().last().prev().clone();
+        var first1 = owl2.children().first().clone();
+        var nextFirst = owl2.children().first().next().clone();
+        prevLast.prependTo(owl2);
+        last1.prependTo(owl2);
+        first1.appendTo(owl2);
+        nextFirst.appendTo(owl2);
+
+    }
+
     owl2.owlCarousel({
 
         items : 5,
@@ -67,7 +91,6 @@
         itemsDesktopSmall : [900,1], // betweem 900px and 601px
         itemsTablet: [600,1], //2 items between 600 and 0
         itemsMobile : false,  
-        navigation: true,
         navigation: true,
         afterAction: function(el) {
             if ($('body').width() >= 1000) {
