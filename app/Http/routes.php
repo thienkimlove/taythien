@@ -53,6 +53,10 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('thu-vien', 'FrontendController@library');
     Route::get('tin-tuc', 'FrontendController@news');
     Route::get('landing', 'FrontendController@landing');
+    //link download redirect
+    Route::get('download', 'FrontendController@download');
+
     Route::get('{value}', 'FrontendController@main');
+
 });
 

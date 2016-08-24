@@ -4,7 +4,7 @@
 
     <div class="feature">
         <div class="img-large">
-            <img src="{{url('frontend/images/sld1.jpg')}}" alt="First slide">
+            <img src="{{url('frontend/images/home_index.jpg')}}" alt="First slide">
         </div>
         <div class="container">
             <div class="row">
@@ -153,11 +153,11 @@
                 </div>
             </div>
             <div class="col-md-12 artworks">
-                <h3>artworks</h3>
+                <h3>Hình ảnh</h3>
                 <div id="owl-art" class="owl-carousel">
                     @foreach ($artWorkSliders as $slider)
                         <div class="item">
-                            <img src="{{url('img/cache/360x195', $slider->image)}}" alt="">
+                            <img src="{{url('files', $slider->image)}}" alt="">
                         </div>
                     @endforeach
                 </div>

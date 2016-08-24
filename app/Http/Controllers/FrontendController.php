@@ -9,6 +9,8 @@ use App\Post;
 use App\Http\Requests;
 use Cache;
 use DB;
+use Illuminate\Http\Request;
+use Jenssegers\Agent\Agent;
 
 class FrontendController extends Controller
 {
@@ -151,27 +153,27 @@ class FrontendController extends Controller
         return view('frontend.library', compact('page', 'backgroundImages', 'videos', 'screenshots'));
     }
 
-    public function news()
+    public function news(Request $request)
     {
         $page = 'tin-tuc';
 
-        $newsQuery = DB::table('posts')
+        $newsPosts = DB::table('posts')
             ->where('status', true)
             ->where('category_id', config('constants.NEWS_CATEGORY_ID'))
             ->latest('updated_at')
-            ->limit(12);
+            ->paginate(2);
 
-
-        $newsPosts = $this->getResult($newsQuery, 'news_post');
-
-        $eventQuery = DB::table('posts')
+        $eventPosts = DB::table('posts')
             ->where('status', true)
             ->where('category_id', config('constants.EVENT_CATEGORY_ID'))
             ->latest('updated_at')
-            ->limit(12);
+            ->paginate(2);
 
-
-        $eventPosts = $this->getResult($eventQuery, 'index_post_event');
+        if ($request->ajax()) {
+            $posts = ($request->input('type') == 'news') ? $newsPosts : $eventPosts;
+            $view = view('frontend.load_posts',compact('posts'))->render();
+            return response()->json(['html'=>$view]);
+        }
 
         return view('frontend.news', compact('page', 'newsPosts', 'eventPosts'));
     }
@@ -212,5 +214,31 @@ class FrontendController extends Controller
             }
 
         }
+    }
+
+    public function download(Request $request)
+    {
+        $campaign_name = $request->input('campaign_name');
+
+        $agent = new Agent();
+
+        $settings = DB::table('settings')->lists('value', 'key_value');
+
+        $ios_link = ($campaign_name) ? str_replace('Campaign_Name', $campaign_name, $settings['link_play_appstore']) : $settings['link_play_appstore'];
+        $android_link = ($campaign_name) ? str_replace('Campaign_Name', $campaign_name, $settings['link_play_googleplay']) : $settings['link_play_googleplay'];
+        $apk_link = ($campaign_name) ? str_replace('Campaign_Name', $campaign_name, $settings['link_play_apk']) : $settings['link_play_apk'];
+
+        // Check for a specific platform with the help of the magic methods:
+
+        if( $agent->isiOS() ){
+           return redirect()->away($ios_link);
+        }
+
+        if( $agent->isAndroidOS() ){
+            return redirect()->away($android_link);
+        }
+
+        return redirect()->away($apk_link);
+
     }
 }

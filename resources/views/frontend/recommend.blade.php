@@ -15,9 +15,10 @@
         <div class="gt1">
             <div class="container">
                 <h1>
-                    WELCOME TO Tây thiên ký
+                    Chào Mừng tới Tây Thiên Ký
                 </h1>
-                <p class="srt-des">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ullamcorper, diam vitae pharetra molestie, erat libero egestas nisi, vitae iaculis diam nisi vitae urna. In fermentum quam at tellus vestibulum semper. Sed at congue est, eu suscipit lacus.</p>
+                <p class="srt-des">Thế giới Tây Thiên huyền bí, mộng mơ, đậm chất cổ trang cùng nhiều hành trình thú vị đang chờ các bạn khám phá. Hãy mau tìm những đồng đội để cùng nhau viết nên câu chuyện “Tây Thiên Ký” nhé!
+                </p>
                 <div class="row cottruyen">
                     <div class="col-md-4">
                         <h2>Cốt truyện</h2>

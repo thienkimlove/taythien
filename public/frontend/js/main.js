@@ -25,7 +25,7 @@
 
     var owl = $(".owl-carousel");
 
-    if (owl.attr('id') == 'owl-chars') {
+    if (owl.attr('id') == 'owl-chars' || owl.attr('id') == 'owl-art') {
        var last = owl.children().last().clone();
        var first = owl.children().first().clone();
         last.prependTo(owl);

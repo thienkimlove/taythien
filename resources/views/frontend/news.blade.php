@@ -29,59 +29,16 @@
                     <div class="tab-ttsk">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#tintuc" aria-controls="tintuc" role="tab" data-toggle="tab">Tin TỨc</a></li>
-                            <li role="presentation"><a href="#sukien" aria-controls="sukien" role="tab" data-toggle="tab">Sự kiện</a></li>
+                            <li role="presentation" class="active"><a id="tab_news" href="#tintuc" aria-controls="tintuc" role="tab" data-toggle="tab">Tin TỨc</a></li>
+                            <li role="presentation"><a id="tab_event" href="#sukien" aria-controls="sukien" role="tab" data-toggle="tab">Sự kiện</a></li>
                         </ul>
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="tintuc">
-
-                                @foreach ($newsPosts as $post)
-                                <div class="row item">
-                                    <div class="col-md-5 col-sm-5">
-                                        <div class="thumbnail">
-                                            <a href="{{url($post->slug.'.html')}}"><img src="{{url('img/cache/460x249', $post->image)}}" alt="{{$post->title}}"></a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-7 col-sm-7">
-                                            <span class="date">
-                                                            <i class="glyphicon glyphicon-time"></i>
-                                                            {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$post->updated_at)->format('d.m.Y')}}
-                                                        </span>
-                                        <h3><a href="{{url($post->slug.'.html')}}">{{$post->title}}</a></h3>
-                                        <p>{{$post->desc}}</p>
-                                        <a href="{{url($post->slug.'.html')}}" class="ttk-more"><i class="glyphicon glyphicon-arrow-right"></i>Xem thêm</a>
-                                    </div>
-                                </div>
-                                @endforeach
-                                <div class="row">
-                                    <a href="#" class="btn ttk-vall">Xem thêm</a>
-                                </div>
+                               @include('frontend.load_posts', ['posts' => $newsPosts])
                             </div>
                             <div role="tabpanel" class="tab-pane" id="sukien">
-
-                                @foreach ($eventPosts as $post)
-                                    <div class="row item">
-                                        <div class="col-md-5 col-sm-5">
-                                            <div class="thumbnail">
-                                                <a href="{{url($post->slug.'.html')}}"><img src="{{url('img/cache/460x249', $post->image)}}" alt="{{$post->title}}"></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-7 col-sm-7">
-                                            <span class="date">
-                                                            <i class="glyphicon glyphicon-time"></i>
-                                                {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$post->updated_at)->format('d.m.Y')}}
-                                                        </span>
-                                            <h3><a href="{{url($post->slug.'.html')}}">{{$post->title}}</a></h3>
-                                            <p>{{$post->desc}}</p>
-                                            <a href="{{url($post->slug.'.html')}}" class="ttk-more"><i class="glyphicon glyphicon-arrow-right"></i>Xem thêm</a>
-                                        </div>
-                                    </div>
-                                @endforeach
-
-                                <div class="row">
-                                    <a href="#" class="btn ttk-vall">Xem thêm</a>
-                                </div>
+                                @include('frontend.load_posts', ['posts' => $eventPosts])
                             </div>
                         </div>
                     </div>
@@ -90,4 +47,55 @@
         </div>
     </div>
 
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        function loadMoreData(page, tab) {
+            $.ajax(
+                    {
+                        url: 'tin-tuc?page=' + page + '&type=' + tab,
+                        type: "get"
+                    })
+                    .done(function (data) {
+                        if (data.html == "") {
+                            return;
+                        }
+                        if (tab == 'news') {
+                            $('#tintuc').append(data.html);
+                        } else {
+                            $('#sukien').append(data.html);
+                        }
+                    })
+                    .fail(function (jqXHR, ajaxOptions, thrownError) {
+                       console.log('server not responding...');
+                    });
+        }
+
+        $(document).ready(function(){
+            var news_page = 1;
+            var event_page = 1;
+            var tab = 'news';
+
+            $('#tab_news').click(function(){
+                tab = 'news';
+            });
+
+            $('#tab_event').click(function(){
+                tab = 'event';
+            });
+
+            $(window).scroll(function() {
+                if($(window).scrollTop() + $(window).height() >= $(document).height()) {
+                    if (tab == 'news') {
+                        news_page ++;
+                        loadMoreData(news_page, tab);
+                    } else {
+                        event_page ++;
+                        loadMoreData(event_page, tab);
+                    }
+                }
+            });
+        });
+    </script>
 @endsection
