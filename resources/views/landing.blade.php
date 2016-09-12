@@ -90,9 +90,21 @@
                     <img src="{{url('frontend/images/img-fanpage.png')}}" alt="">
                 </a>
 
-                <span>
-                        <div class="fb-share-button" data-href="https://www.facebook.com/LienMinhHuyenThoai" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2FLienMinhHuyenThoai&amp;src=sdkpreparse">Share</a></div>
-                    </span>
+                <a href="{{url('/')}}" class="" style="
+                        padding: 1px 12px 3px;
+                        background: #e31e25;
+                        color: #fff;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        text-shadow: 1px 0 1px rgba(0,0,0,.5);
+                        text-decoration: none;
+                        top: -3px;
+                        display: inline-block;
+                        position: relative;
+                    ">
+                    Trang chủ
+                </a>
+
             </div>
         </div>
     </div>

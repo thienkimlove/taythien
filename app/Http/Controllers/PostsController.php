@@ -19,7 +19,7 @@ class PostsController extends AdminController
         $this->categories = array(
             '' => 'Choose category',
             config('constants.NEWS_CATEGORY_ID') => 'Tin Tức',
-            config('constants.NEWS_CATEGORY_ID') => 'Sự Kiện'
+            config('constants.EVENT_CATEGORY_ID') => 'Sự Kiện'
         );
     }
 

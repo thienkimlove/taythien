@@ -34,7 +34,8 @@
                     <div id="owl-chars" class="owl-carousel">
                         @foreach ($charSliders as $slider)
                            <div class="item">
-                            <img src="{{url('img/cache/241x343', $slider->image)}}" alt="">
+                            {{--<img src="{{url('img/cache/241x343', $slider->image)}}" alt="">--}}
+                            <img src="{{url('files', $slider->image)}}" alt="">
                             <div class="info">
                                 <h3>{{$slider->title}}</h3>
                                 <p>{{$slider->desc}}</p>
