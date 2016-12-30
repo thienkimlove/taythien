@@ -20,6 +20,7 @@
         <div class="ttk-download">
             <a href="{{$settings['link_napthe']}}" class="napthe"></a>
             <a href="{{$settings['link_taigame']}}" class="taigame"></a>
+            <a href="" class="giftcode" data-toggle="modal" data-target="#giftcode"></a>
         </div>
     </div>
     <div class="main articles">
@@ -30,12 +31,16 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active"><a id="tab_news" href="#tintuc" aria-controls="tintuc" role="tab" data-toggle="tab">Tin TỨc</a></li>
+                            <li role="presentation"><a id="tab_guide" href="#guide" aria-controls="guide" role="tab" data-toggle="tab">Hướng dẫn</a></li>
                             <li role="presentation"><a id="tab_event" href="#sukien" aria-controls="sukien" role="tab" data-toggle="tab">Sự kiện</a></li>
                         </ul>
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="tintuc">
                                @include('frontend.load_posts', ['posts' => $newsPosts])
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="guide">
+                                @include('frontend.load_posts', ['posts' => $guidePosts])
                             </div>
                             <div role="tabpanel" class="tab-pane" id="sukien">
                                 @include('frontend.load_posts', ['posts' => $eventPosts])
@@ -63,8 +68,10 @@
                         }
                         if (tab == 'news') {
                             $('#tintuc').append(data.html);
-                        } else {
+                        } else if (tab == 'event') {
                             $('#sukien').append(data.html);
+                        } else {
+                            $('#guide').append(data.html);
                         }
                     })
                     .fail(function (jqXHR, ajaxOptions, thrownError) {
@@ -75,6 +82,7 @@
         $(document).ready(function(){
             var news_page = 1;
             var event_page = 1;
+            var guide_page = 1;
             var tab = 'news';
 
             $('#tab_news').click(function(){
@@ -85,14 +93,21 @@
                 tab = 'event';
             });
 
+            $('#tab_guide').click(function(){
+                tab = 'guide';
+            });
+
             $(window).scroll(function() {
                 if($(window).scrollTop() + $(window).height() >= $(document).height()) {
                     if (tab == 'news') {
                         news_page ++;
                         loadMoreData(news_page, tab);
-                    } else {
+                    } else if (tab == 'event') {
                         event_page ++;
                         loadMoreData(event_page, tab);
+                    } else {
+                        guide_page ++;
+                        loadMoreData(guide_page, tab);
                     }
                 }
             });

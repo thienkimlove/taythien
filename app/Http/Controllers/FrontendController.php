@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App;
 use App\Category;
 use App\GameContent;
 use App\Post;
@@ -11,6 +12,7 @@ use Cache;
 use DB;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
+use URL;
 
 class FrontendController extends Controller
 {
@@ -54,6 +56,15 @@ class FrontendController extends Controller
 
         $indexNewsEvent = $this->getResult($indexPostEventQuery, 'index_post_event');
 
+        $indexPostGuideQuery = DB::table('posts')
+            ->where('status', true)
+            ->where('category_id', config('constants.GUIDE_CATEGORY_ID'))
+            ->latest('updated_at')
+            ->limit(3);
+
+
+        $indexNewsGuide = $this->getResult($indexPostGuideQuery, 'index_post_guide');
+
         $trailerQuery = DB::table('game_contents')
             ->where('type', config('constants.GAME_CONTENT_TYPE_TRAILER'))
             ->latest('updated_at')
@@ -71,8 +82,26 @@ class FrontendController extends Controller
 
         $artWorkSliders = $this->getResult($artWorkQuery, 'index_artwork');
 
+        $meta_title = 'Tây Thiên Ký';
+        $meta_desc  = 'Tây Thiên Ký';
+        $meta_keywords = 'Tây Thiên Ký';
+        $meta_image = url('frontend/images/favicon.ico');
+        $meta_url = url('/');
 
-        return view('frontend.index', compact('page', 'indexNewsPosts', 'indexNewsEvent', 'trailer', 'artWorkSliders'));
+
+        return view('frontend.index', compact(
+            'page',
+            'indexNewsPosts',
+            'indexNewsEvent',
+            'indexNewsGuide',
+            'trailer',
+            'artWorkSliders',
+            'meta_title',
+            'meta_desc',
+            'meta_keywords',
+            'meta_image',
+            'meta_url'
+        ));
     }
 
     public function recommend()
@@ -115,8 +144,27 @@ class FrontendController extends Controller
 
         $functionLists = $this->getResult($functionListQuery, 'recommend_function');
 
+        $meta_title = 'Tây Thiên Ký';
+        $meta_desc  = 'Tây Thiên Ký';
+        $meta_keywords = 'Tây Thiên Ký';
+        $meta_image = url('frontend/images/favicon.ico');
+        $meta_url = url('gioi-thieu');
 
-        return view('frontend.recommend', compact('page', 'charSliders', 'missionList', 'petSliders', 'skillList', 'togetherSliders', 'functionLists'));
+
+        return view('frontend.recommend', compact(
+            'page',
+            'charSliders',
+            'missionList',
+            'petSliders',
+            'skillList',
+            'togetherSliders',
+            'functionLists',
+            'meta_title',
+            'meta_desc',
+            'meta_keywords',
+            'meta_image',
+            'meta_url'
+        ));
     }
 
     public function gamer()
@@ -129,8 +177,22 @@ class FrontendController extends Controller
 
         $gamers = $this->getResult($gamerQuery, 'gamers');
 
+        $meta_title = 'Tây Thiên Ký';
+        $meta_desc  = 'Tây Thiên Ký';
+        $meta_keywords = 'Tây Thiên Ký';
+        $meta_image = url('frontend/images/favicon.ico');
+        $meta_url = url('tan-thu');
 
-        return view('frontend.gamer', compact('page', 'gamers'));
+
+        return view('frontend.gamer', compact(
+            'page',
+            'gamers',
+            'meta_title',
+            'meta_desc',
+            'meta_keywords',
+            'meta_image',
+            'meta_url'
+        ));
     }
 
     public function library()
@@ -148,9 +210,24 @@ class FrontendController extends Controller
         $screenshots = GameContent::latest('updated_at')
             ->where('type', config('constants.GAME_CONTENT_TYPE_LIBRARY_SCREENSHOTS'))->get();
 
+        $meta_title = 'Tây Thiên Ký';
+        $meta_desc  = 'Tây Thiên Ký';
+        $meta_keywords = 'Tây Thiên Ký';
+        $meta_image = url('frontend/images/favicon.ico');
+        $meta_url = url('thu-vien');
 
 
-        return view('frontend.library', compact('page', 'backgroundImages', 'videos', 'screenshots'));
+        return view('frontend.library', compact(
+            'page',
+            'backgroundImages',
+            'videos',
+            'screenshots',
+            'meta_title',
+            'meta_desc',
+            'meta_keywords',
+            'meta_image',
+            'meta_url'
+        ));
     }
 
     public function news(Request $request)
@@ -169,13 +246,42 @@ class FrontendController extends Controller
             ->latest('updated_at')
             ->paginate(2);
 
+        $guidePosts = DB::table('posts')
+            ->where('status', true)
+            ->where('category_id', config('constants.GUIDE_CATEGORY_ID'))
+            ->latest('updated_at')
+            ->paginate(2);
+
         if ($request->ajax()) {
-            $posts = ($request->input('type') == 'news') ? $newsPosts : $eventPosts;
+            if ($request->input('type') == 'news') {
+                $posts = $newsPosts;
+            } else if ($request->input('type') == 'event') {
+                $posts = $eventPosts;
+            } else {
+                $posts = $guidePosts;
+            }
+
             $view = view('frontend.load_posts',compact('posts'))->render();
             return response()->json(['html'=>$view]);
         }
 
-        return view('frontend.news', compact('page', 'newsPosts', 'eventPosts'));
+        $meta_title = 'Tây Thiên Ký';
+        $meta_desc  = 'Tây Thiên Ký';
+        $meta_keywords = 'Tây Thiên Ký';
+        $meta_image = url('frontend/images/favicon.ico');
+        $meta_url = url('tin-tuc');
+
+        return view('frontend.news', compact(
+            'page',
+            'newsPosts',
+            'eventPosts',
+            'guidePosts',
+            'meta_title',
+            'meta_desc',
+            'meta_keywords',
+            'meta_image',
+            'meta_url'
+        ));
     }
 
     public function landing()
@@ -188,7 +294,22 @@ class FrontendController extends Controller
 
         $artWorkSliders = $this->getResult($artWorkQuery, 'index_artwork');
 
-        return view('landing', compact('page', 'artWorkSliders'));
+        $meta_title = 'Tây Thiên Ký';
+        $meta_desc  = 'Tây Thiên Ký';
+        $meta_keywords = 'Tây Thiên Ký';
+        $meta_image = url('frontend/images/favicon.ico');
+        $meta_url = url('landing');
+
+
+        return view('landing', compact(
+            'page',
+            'artWorkSliders',
+            'meta_title',
+            'meta_desc',
+            'meta_keywords',
+            'meta_image',
+            'meta_url'
+        ));
     }
 
 
@@ -210,7 +331,22 @@ class FrontendController extends Controller
 
                 $relatedPosts = $this->getResult($relatedQuery, 'post_detail_'.$post->id);
 
-                return view('frontend.post', compact('post', 'page', 'relatedPosts'));
+                $meta_title = $post->title;
+                $meta_desc  = $post->desc;
+                $meta_keywords = 'Tây Thiên Ký';
+                $meta_image = url('img/cache/600x315', $post->image);
+                $meta_url = url($post->slug.'.html');
+
+                return view('frontend.post', compact(
+                    'post',
+                    'page',
+                    'relatedPosts',
+                    'meta_title',
+                    'meta_desc',
+                    'meta_keywords',
+                    'meta_image',
+                    'meta_url'
+                ));
             }
 
         }
@@ -232,13 +368,82 @@ class FrontendController extends Controller
 
         if( $agent->isiOS() ){
            return redirect()->away($ios_link);
-        }
-
-        if( $agent->isAndroidOS() ){
+        } else {
             return redirect()->away($android_link);
         }
 
-        return redirect()->away($apk_link);
+      /*  if( $agent->isAndroidOS() ){
+            return redirect()->away($android_link);
+        }
+
+        return redirect()->away($apk_link);*/
+
+    }
+
+    public function feed()
+    {
+        // create new feed
+        $feed = App::make("feed");
+
+        // multiple feeds are supported
+        // if you are using caching you should set different cache keys for your feeds
+
+        // cache the feed for 60 minutes (second parameter is optional)
+        $feed->setCache(60, 'laravelFeedKey');
+
+        // check if there is cached feed and build new only if is not
+        if (!$feed->isCached())
+        {
+            // creating rss feed with our most recent 20 posts
+            $posts = \DB::table('posts')->orderBy('created_at', 'desc')->take(20)->get();
+
+            // set your feed's title, description, link, pubdate and language
+            $feed->title = 'Tay Thien Ky RSS';
+            $feed->description = 'Tay Thien Ky RSS';
+            $feed->logo = 'http://taythien.garena.vn/frontend/images/ttk.png';
+            $feed->link = url('feed');
+            $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
+            $feed->pubdate = $posts[0]->created_at;
+            $feed->lang = 'en';
+            $feed->setShortening(true); // true or false
+            $feed->setTextLimit(100); // maximum length of description text
+
+            foreach ($posts as $post)
+            {
+                // set item's title, author, url, pubdate, description, content, enclosure (optional)*
+                $feed->add($post->title, 'Tay Thien Ky', URL::to($post->slug.'.html'), $post->created_at, $post->desc, $post->desc);
+            }
+
+        }
+
+        // first param is the feed format
+        // optional: second param is cache duration (value of 0 turns off caching)
+        // optional: you can set custom cache key with 3rd param as string
+        return $feed->render('rss');
+
+        // to return your feed as a string set second param to -1
+        // $xml = $feed->render('atom', -1);
+    }
+
+    public function ajax()
+    {
+        $msg = null;
+        if (!session()->has('already_get_give_code')) {
+            $giftCodeCount = App\Code::where('is_give', false)->count();
+            if ($giftCodeCount > 0) {
+              $giftCode =  App\Code::where('is_give', false)->limit(1)->get();
+              $giftCode = $giftCode->first();
+              $giftCode->update(['is_give' => true]);
+              session()->put('already_get_give_code', 1);
+              $msg = $giftCode->code;
+            } else {
+                $msg = 'Hết giftcode!';
+            }
+        } else {
+            $msg = 'Bạn đã nhận rồi!';
+        }
+
+        return response()->json(['msg' => $msg]);
 
     }
 }

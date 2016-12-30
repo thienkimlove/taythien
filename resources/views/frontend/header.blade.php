@@ -1,3 +1,5 @@
+@if (app('request')->input('gm') != 1)
+
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <a class="navbar-brand hidden-lg hidden-md" href="/">
@@ -28,7 +30,7 @@
                 </a>
                 <li class="{{($page == 'tin-tuc') ? 'active' : ''}}"><a href="{{url('tin-tuc')}}">Tin tức</a></li>
                 <li class="{{($page == 'thu-vien') ? 'active' : ''}}"><a href="{{url('thu-vien')}}">Thư viện</a></li>
-                <li><a href="http://hotro.garena.vn/" target="_blank">Hỗ trợ</a></li>
+                <li><a href="https://hotro.garena.vn/" target="_blank">Hỗ trợ</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -36,3 +38,4 @@
     <!-- /.container -->
 </nav>
 
+@endif

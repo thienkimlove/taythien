@@ -34,8 +34,12 @@
                             <a href="{{url('admin/posts?category_id='.config('constants.NEWS_CATEGORY_ID'))}}">Tin tức</a>
                         </li>
                         <li>
+                            <a href="{{url('admin/posts?category_id='.config('constants.GUIDE_CATEGORY_ID'))}}">Hướng dẫn</a>
+                        </li>
+                        <li>
                             <a href="{{url('admin/posts?category_id='.config('constants.EVENT_CATEGORY_ID'))}}">Sự kiện</a>
                         </li>
+
                         <li>
                             <a href="{{url('admin/posts/create')}}">Add</a>
                         </li>

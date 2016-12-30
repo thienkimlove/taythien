@@ -17,7 +17,9 @@
         "predis/predis": "^1.1",
         "maatwebsite/excel": "~2.1.0",
         "laravelcollective/bus": "^5.2",
-        "jenssegers/agent": "^2.3"
+        "jenssegers/agent": "^2.4",
+        "spatie/laravel-feed": "^1.0",
+        "roumen/feed": "^2.10"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

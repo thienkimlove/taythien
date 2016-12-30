@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b58aa8b34f8ebfa0ba620f87bca80bbe",
-    "content-hash": "24ed93bdac5213bbc9e61602aef15949",
+    "hash": "026ff3b3e6d68f2f66a4e63be87bec37",
+    "content-hash": "adbe36273ea5ce85a2b54e2a03655a30",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -857,26 +857,26 @@
         },
         {
             "name": "jenssegers/agent",
-            "version": "v2.3.3",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jenssegers/agent.git",
-                "reference": "3068d6372a4677af84014a53d5a212cfa74492c1"
+                "reference": "7a9bfa147169bd47b0de89438b96a41ae0a3b077"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jenssegers/agent/zipball/3068d6372a4677af84014a53d5a212cfa74492c1",
-                "reference": "3068d6372a4677af84014a53d5a212cfa74492c1",
+                "url": "https://api.github.com/repos/jenssegers/agent/zipball/7a9bfa147169bd47b0de89438b96a41ae0a3b077",
+                "reference": "7a9bfa147169bd47b0de89438b96a41ae0a3b077",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "^4.0|^5.0",
                 "mobiledetect/mobiledetectlib": "^2.7.6",
-                "php": ">=5.3.0"
+                "php": ">=5.4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.0|^5.0",
-                "satooshi/php-coveralls": "^0.6"
+                "phpunit/phpunit": "^4.8|^5.0",
+                "satooshi/php-coveralls": "^1.0"
             },
             "type": "library",
             "extra": {
@@ -899,18 +899,19 @@
                     "homepage": "https://jenssegers.com"
                 }
             ],
-            "description": "A PHP desktop/mobile user agent parser with support for Laravel, based on Mobiledetect",
+            "description": "Desktop/mobile user agent parser with support for Laravel, based on Mobiledetect",
             "homepage": "https://github.com/jenssegers/agent",
             "keywords": [
                 "Agent",
                 "browser",
+                "desktop",
                 "laravel",
                 "mobile",
                 "platform",
                 "user agent",
                 "useragent"
             ],
-            "time": "2016-03-08 13:47:22"
+            "time": "2016-12-10 11:39:28"
         },
         {
             "name": "jeremeamia/SuperClosure",
@@ -2097,6 +2098,115 @@
                 "shell"
             ],
             "time": "2016-03-09 05:03:14"
+        },
+        {
+            "name": "roumen/feed",
+            "version": "v2.10.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RoumenDamianoff/laravel-feed.git",
+                "reference": "900594412cab37515b2b53c8953af1201024e48d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RoumenDamianoff/laravel-feed/zipball/900594412cab37515b2b53c8953af1201024e48d",
+                "reference": "900594412cab37515b2b53c8953af1201024e48d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.0",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.0",
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Roumen\\Feed": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roumen Damianoff",
+                    "email": "roumen@dawebs.com",
+                    "homepage": "https://roumen.it",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple feed generator for Laravel.",
+            "homepage": "https://roumen.it/projects/laravel-feed",
+            "keywords": [
+                "atom",
+                "feed",
+                "generator",
+                "laravel",
+                "rss"
+            ],
+            "time": "2016-07-17 13:06:35"
+        },
+        {
+            "name": "spatie/laravel-feed",
+            "version": "1.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-feed.git",
+                "reference": "0843b5c269b252ff45ddb99faa523271f7654bfa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-feed/zipball/0843b5c269b252ff45ddb99faa523271f7654bfa",
+                "reference": "0843b5c269b252ff45ddb99faa523271f7654bfa",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.1.0|~5.2.0|~5.3.0",
+                "nesbot/carbon": "^1.0",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "orchestra/database": "3.3.x-dev",
+                "orchestra/testbench": "3.3.x-dev",
+                "phpunit/phpunit": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Feed\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Jolita Grazyte",
+                    "email": "jolita@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Generates rss feed",
+            "homepage": "https://github.com/spatie/laravel-feed",
+            "keywords": [
+                "laravel",
+                "laravel-feed",
+                "rss",
+                "spatie"
+            ],
+            "time": "2016-10-01 18:54:07"
         },
         {
             "name": "swiftmailer/swiftmailer",

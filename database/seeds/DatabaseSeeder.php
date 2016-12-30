@@ -39,6 +39,11 @@ class CategorySeeder extends Seeder
             'desc' => 'Sự kiện'
         ]);
 
+        Category::create([
+            'name' => 'Hướng dẫn',
+            'desc' => 'Hướng dẫn'
+        ]);
+
         $img = md5(time()).'.jpg';
 
         Image::make(public_path('frontend/images/img-lamnhiemvutt.jpg'))->save(public_path('files/'. $img));

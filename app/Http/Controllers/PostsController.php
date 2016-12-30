@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use App\Post;
@@ -19,7 +20,8 @@ class PostsController extends AdminController
         $this->categories = array(
             '' => 'Choose category',
             config('constants.NEWS_CATEGORY_ID') => 'Tin Tức',
-            config('constants.EVENT_CATEGORY_ID') => 'Sự Kiện'
+            config('constants.EVENT_CATEGORY_ID') => 'Sự Kiện',
+            config('constants.GUIDE_CATEGORY_ID') => 'Hướng Dẫn',
         );
     }
 

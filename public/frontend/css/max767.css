@@ -1,3 +1,6 @@
+.ttk-dwdbar .qrcode .ol-mb {
+	display: none;
+}
 @media (max-width: 360px) {
 
 	.tab-ttsk .nav-tabs>li, .tab-ttsk .nav-tabs>li {
@@ -19,6 +22,14 @@
 	}
 }
 @media (max-width: 767px) {
+	.trailer-artworks .container > .row {
+		display: none;
+	}
+	#tintuc .thumbnail a>img, #tintuc .thumbnail>img,
+	#huongdan .thumbnail a>img, #huongdan .thumbnail>img,
+	#sukien .thumbnail a>img, #sukien .thumbnail>img {
+		width: 100%;
+	}
 	.owl-theme .owl-controls .owl-buttons div {
 		background: url(../images/i-owlac.png) no-repeat;
 	}
@@ -32,7 +43,7 @@
 		line-height: 18px;
 	}
 	.tab-ttsk .nav-tabs>li>a {
-		padding: 0 25px;
+		padding: 0 10px;
 		line-height: 34px;
 		
 	}
@@ -60,9 +71,18 @@
 		max-width: 140px;
 		display: block !important;
 	}
-	.trailer-artworks h3 {
+	.trailer-artworks h3,
+	.ol-mb h3 {
 		font-size: 30px;
-		
+		text-transform: uppercase;	
+		font-weight: 300;
+	}
+	.ttk-dwdbar .qrcode > div:first-child {
+		display: none;
+	}
+	.ttk-dwdbar .qrcode .ol-mb {
+		display: block;
+		text-align: left;
 	}
 	footer {
 		padding: 5px !important;
@@ -188,7 +208,8 @@
 	}*/
 	.ttk-download {
 		top: 90px;
-		height: 71px;
+		height: 175px;
+		/*height: 71px;*/
 		width: 100px;
 		-webkit-background-size: 100px;
 		     -o-background-size: 100px;
@@ -404,6 +425,7 @@
 		/*background-position: center;
 		padding-left: 168px;*/
 		/*color: #FFF !important;*/
+		display: none;
 	}
 	.trailer-artworks {}
 	.tab-ttsk .nav-tabs>li.active>a {

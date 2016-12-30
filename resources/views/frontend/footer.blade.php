@@ -16,6 +16,7 @@
             <div class="col-md-1  col-sm-1 col-xs-1">
                 <img src="{{url('frontend/images/p12+.png')}}" alt="" class="pull-right">
             </div>
+
         </div>
     </div>
 </footer>

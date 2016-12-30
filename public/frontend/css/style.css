@@ -55,16 +55,18 @@ a:active, a:focus {
 	right: 0;
 	top: 180px;
 	width: 190px;
-	height: 136px;
+	height: 199px;
+	/*height: 135px;*/
+	overflow: hidden;
 	background: url(../images/ttk-dwl.png) no-repeat;
 	text-indent: -9999em;
 	z-index: 10;
 }
+
 .ttk-download a {
 	display: block;
 	width: 190px;
-	height: 68px;
-	
+	height: 67px;
 }
 .ttk-download a:hover {
 	background: rgba(255,255,255,.1);
@@ -1263,7 +1265,7 @@ footer {
 		margin-bottom: 30px;
 	}
 	.teaser-page .ttk-fs .ttk-fanpagelink {
-		top: 1px;
+		/*top: 1px;*/
 	}
 }
 @media (min-width: 992px) and (max-width: 1399px) {
@@ -1288,7 +1290,7 @@ footer {
 	    background-position: 20px center !important;
 	}
 	.teaser-page .ttk-fs .ttk-fanpagelink {
-		top: 1px;
+		/*top: 1px;*/
 	}
 }
 @media (max-width: 1399px) {
@@ -1323,5 +1325,48 @@ footer {
 		font-size: 36px;
 		font-weight: 600;
 		text-transform: uppercase;
+	}
+}
+/*Popup gift code*/
+.modal-giftcode .modal-title {
+		font-size: 28px;
+		color: #777276;
+	}
+	.modal-giftcode .modal-header .close {
+		margin-top: 5px;
+	}
+	.modal-giftcode .ttk-btn-va {
+		font-weight: 700;
+		font-size: 20px;
+		text-transform: none;
+		width: 80%;
+		display: block;
+		margin: 20px auto 20px;
+	}
+	.modal-giftcode .gcode {
+		width: 80%;
+		display: block;
+		margin: 10px auto 30px;
+		color: #3e3a3d;
+		line-height: 60px;
+	}
+	.modal-giftcode .gcode span {
+		display: block;
+		min-width: 170px;
+		min-height: 60px;
+		background-color: #e4e3e4;
+		text-align: center;
+		font-weight: 700;
+	}
+@media (min-width: 992px) {
+	.modal-giftcode .modal-dialog {
+	    width: 556px;
+	    margin: 80px auto;
+	}
+	.modal-giftcode .gcode span {
+		display: inline-block;
+		min-width: 170px;
+		min-height: 60px;
+		float: right;
 	}
 }

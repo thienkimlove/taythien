@@ -33,7 +33,7 @@
                         <img src="{{url('frontend/images/p12+.png')}}" alt="">
                     </div>
                     <div class="h1 gametitle">
-                        <a href="#"><img src="{{url('frontend/images/ttk.png')}}" alt=""></a>
+                        <a href="javascript:void(0)"><img src="{{url('frontend/images/ttk.png')}}" alt=""></a>
                     </div>
                 </div>
                 <h2 class="pagetitle">
@@ -45,20 +45,20 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="ttk-teaser">
-                            <a href="http://www.youtube.com/watch?v=-k9kdgVx7VY" data-toggle="lightbox">
+                            <a href="https://www.youtube.com/watch?v=keFptRNUmVA" data-toggle="lightbox">
                                 <img src="{{url('frontend/images/tsr-teaser.jpg')}}" alt="">
                             </a>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="ttk-trailer">
-                            <a href="http://www.youtube.com/watch?v=k6mFF3VmVAs" data-toggle="lightbox">
+                            <a href="https://www.youtube.com/watch?v=keFptRNUmVA" data-toggle="lightbox">
                                 <img src="{{url('frontend/images/tsr-trailer.jpg')}}" alt="">
                             </a>
                         </div>
                     </div>
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#ttk-teaser" aria-controls="ttk-teaser" role="tab" data-toggle="tab">Teaser</a></li>
-                        <li role="presentation"><a href="#ttk-trailer" aria-controls="ttk-trailer" role="tab" data-toggle="tab">Trailer</a></li>
-                    </ul>
+                   {{-- <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#ttk-teaser" aria-controls="ttk-teaser"  role="tab" data-toggle="tab">Viral</a></li>
+                        --}}{{--<li role="presentation"><a href="#ttk-trailer" aria-controls="ttk-trailer" role="tab" data-toggle="tab">Trailer</a></li>--}}{{--
+                    </ul>--}}
                 </div>
                 <div id="owl-art" class="owl-carousel">
                     @foreach ($artWorkSliders as $slider)
@@ -70,14 +70,17 @@
                 <div class="tsr-download">
                     <div class="list-group ttk-dwdbar">
 
+                       {{-- <a href="{{$settings['link_play_appstore']}}" class="list-group-item ap">--}}
                         <a href="{{$settings['link_play_appstore']}}" class="list-group-item ap">
                             Tải trên
                             <span>App store</span>
                         </a>
+                        {{--<a href="{{$settings['link_play_googleplay']}}" class="list-group-item gp">--}}
                         <a href="{{$settings['link_play_googleplay']}}" class="list-group-item gp">
                             Tải trên
                             <span>Google play</span>
                         </a>
+                       {{-- <a href="{{$settings['link_play_garena_plus']}}" class="list-group-item glg">--}}
                         <a href="{{$settings['link_play_garena_plus']}}" class="list-group-item glg">
                             Chơi trên
                             <span>Giả lập G+</span>
@@ -132,10 +135,20 @@
 </footer>
 <!-- JavaScript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="{{url('frontend/js/owl.carousel.min.js')}}"></script>
 <script src="{{url('frontend/js/ekko-lightbox.min.js')}}"></script>
 <script src="{{url('frontend/js/main.js')}}"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-61673473-16', 'auto');
+    ga('send', 'pageview');
+
+</script>
 </body>
 
 </html>

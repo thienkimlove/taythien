@@ -46,8 +46,13 @@ Route::group(['middleware' => 'web'], function () {
     //Route::get('redirect', 'SocialAuthController@redirect');
     //Route::get('callback', 'SocialAuthController@callback');
     //Route::get('logout', 'SocialAuthController@logout');
+	
 
-    Route::get('/', 'FrontendController@index');   
+	Route::get('feed', 'FrontendController@feed');
+    Route::get('/', 'FrontendController@index');
+   // Route::get('/', function(){
+    //    return redirect('landing');
+   // });
     Route::get('gioi-thieu', 'FrontendController@recommend');
     Route::get('tan-thu', 'FrontendController@gamer');
     Route::get('thu-vien', 'FrontendController@library');
@@ -55,8 +60,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('landing', 'FrontendController@landing');
     //link download redirect
     Route::get('download', 'FrontendController@download');
+    Route::get('ajax', 'FrontendController@ajax');
 
     Route::get('{value}', 'FrontendController@main');
+	
+	
 
 });
 

@@ -43,4 +43,11 @@ class Post extends Model implements SluggableInterface
         $query->where('status', true);
     }
 
+    public function getFeedItemId()
+    {
+        return $this->id;
+    }
+
+
+
 }
